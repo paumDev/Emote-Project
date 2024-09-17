@@ -1,0 +1,51 @@
+﻿@inject IJSRuntime JS
+@inherits LayoutComponentBase
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-primary px-5"
+     aria-label="Emote Web navigation header">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+            <img src="images/logo-emotesApp.png" width="60" height="60" 
+            class="d-inline-block align-top mb-2 mt-1" alt="Emote Web">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <h3 class="navbar-brand me-auto ms-5">Emote Web  </h3>
+
+            <ul class="navbar-nav mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <div class="nav-link">
+                        
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div class="nav-link">
+                        
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="custom-container">
+            <div class="content">
+                <label class="switch">
+                    <input type="checkbox" @onchange="ToggleTheme" checked="@(isDarkTheme)">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid h-100">
+    <div class="row h-100">
+        <NavMenu></NavMenu>
+        <div id="page-content-wrapper">
+            @Body
+        </div>
+    </div>
+</div>

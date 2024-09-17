@@ -1,0 +1,91 @@
+﻿@page "/emoteedit"
+@page "/emoteedit/{EmoteId}"
+@using ClassLibraryEmotes;
+
+@if (!Saved)
+{
+    <section class="employee-edit">
+        <h1 class="page-title">Details for @Emote.Name</h1>
+        <div class="col-2 text-center">
+            <img src="@Emote.ImageName" class="img-fluid rounded mx-auto d-block" alt="Emote Image">
+        </div>
+        <EditForm Model="@Emote" OnValidSubmit="@HandleValidSubmit" OnInvalidSubmit="HandleInvalidSubmit">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+
+            @if (Emote.EmoteId == 0)
+            {
+                <div class="row mb-3">
+                    <label for="image" class="col-12 col-sm-3">Select Emote: </label>
+                    <div class="col-md-8">
+                        <InputFile OnChange="OnInputFileChange" />
+                    </div>
+                </div>
+            }
+
+
+            <div class="row mb-3">
+                <label for="Name" class="col-form-label col-md-3">Name: </label>
+                <div class="col-md-8">
+                    <InputText id="Name" @bind-Value="@Emote.Name" class="form-control col-md-8" placeholder="Enter Name"></InputText>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="User" class="col-form-label col-md-3">User: </label>
+                <div class="col-md-8">
+                    <InputSelect id="User" @bind-Value="@Emote.UserId" class="form-select col-md-8">
+                        @foreach (var user in Users)
+                        {
+                            <option value="@user.UserId">@user.UserName</option>
+                        }
+                    </InputSelect>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="Description" class="col-form-label col-md-3">Description: </label>
+                <div class="col-md-8">
+                    <InputText id="Description" @bind-Value="@Emote.Description" class="form-control col-md-8" placeholder="Enter Desc"></InputText>
+                </div>
+            </div>
+            <div>
+                <button type="submit" class="buttonOptCards buttonOptCards-save">Save Emote</button>
+                @if (Emote.EmoteId > 0)
+                {
+                    <button type="button" class="buttonOptCards buttonOptCards-alarm" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                        Delete
+                    </button>
+                    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="deleteModalLabel">Sure?</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Tas seguro <img src="/images/sure-sus.gif" width="80px" height="auto" alt="gato bailongo desc" />
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="buttonOptCards buttonOptCards-alarm2" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="buttonOptCards buttonOptCards-alarm" data-bs-dismiss="modal" @onclick="@DeleteEmote">Delete</button>
+                                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <button type="submit" class="buttonOptCards" @onclick="@NavigateToOverview">Emotes</button>
+
+
+                <img src="/images/waiting-icon.gif" width="80px" height="auto" alt="gato bailongo desc" />
+            </div>
+        </EditForm>
+    </section>
+}
+else
+{
+    <div class="alert @StatusClass">@Message</div>
+    <button type="button" class="buttonOptCards" @onclick="@NavigateToOverview">Back to all emotes</button>
+}

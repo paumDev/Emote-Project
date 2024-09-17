@@ -1,0 +1,7 @@
+﻿[*.cs]
+
+# CS8602: Desreferencia de una referencia posiblemente NULL.
+dotnet_diagnostic.CS8602.severity = none
+
+# CA1305: Especificar IFormatProvider
+dotnet_diagnostic.CA1305.severity = none
