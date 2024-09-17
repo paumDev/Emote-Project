@@ -20,7 +20,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\BethanysPieShopHRM.App\EmoteApp.App.csproj" />
+		<ProjectReference Include="..\EmoteApp.App\EmoteApp.App.csproj" />
 		<ProjectReference Include="..\ClassLibraryEmotes\ClassLibraryEmotes.csproj" />
 	</ItemGroup>
 
