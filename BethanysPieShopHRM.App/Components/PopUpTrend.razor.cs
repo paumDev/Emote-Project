@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Components;
 using System.Threading.Tasks;
 
-namespace BethanysPieShopHRM.App.Components
+namespace EmoteApp.App.Components
 {
     public partial class PopUpTrend
     {

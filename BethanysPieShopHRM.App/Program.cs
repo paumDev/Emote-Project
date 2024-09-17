@@ -1,6 +1,6 @@
-using BethanysPieShopHRM.App;
+using EmoteApp.App;
 using Blazored.LocalStorage;
-using BethanysPieShopHRM.App.Services;
+using EmoteApp.App.Services;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 

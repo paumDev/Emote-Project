@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 
-namespace BethanysPieShopHRM.App.Components
+namespace EmoteApp.App.Components
 {
     public partial class InboxPeopleOnline
     {

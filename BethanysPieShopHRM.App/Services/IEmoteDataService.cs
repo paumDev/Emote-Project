@@ -1,6 +1,6 @@
 ﻿using ClassLibraryEmotes;
 
-namespace BethanysPieShopHRM.App.Services
+namespace EmoteApp.App.Services
 {
     public interface IEmoteDataService
     {

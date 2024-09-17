@@ -1,4 +1,4 @@
-﻿namespace BethanysPieShopHRM.App.Helper
+﻿namespace EmoteApp.App.Helper
 {
     public class LocalStorageConstants
     {

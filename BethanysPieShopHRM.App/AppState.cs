@@ -1,4 +1,4 @@
-﻿namespace BethanysPieShopHRM.App
+﻿namespace EmoteApp.App
 {
     public class AppState
     {

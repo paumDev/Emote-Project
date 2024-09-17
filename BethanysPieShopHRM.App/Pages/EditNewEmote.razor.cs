@@ -1,9 +1,9 @@
-﻿using BethanysPieShopHRM.App.Services;
+﻿using EmoteApp.App.Services;
 using ClassLibraryEmotes;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 
-namespace BethanysPieShopHRM.App.Pages
+namespace EmoteApp.App.Pages
 {
     public partial class EditNewEmote
     {

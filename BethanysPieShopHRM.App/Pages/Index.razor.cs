@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 
-namespace BethanysPieShopHRM.App.Pages
+namespace EmoteApp.App.Pages
 {
     public partial class Index
     {

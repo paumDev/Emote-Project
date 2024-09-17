@@ -1,6 +1,6 @@
 ﻿using Microsoft.JSInterop;
 
-namespace BethanysPieShopHRM.App.Services
+namespace EmoteApp.App.Services
 {
     public class ImageDownloader
     {

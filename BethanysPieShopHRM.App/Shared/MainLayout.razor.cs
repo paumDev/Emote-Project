@@ -2,7 +2,7 @@
 using Microsoft.JSInterop;
 using System.Threading.Tasks;
 
-namespace BethanysPieShopHRM.App.Shared
+namespace EmoteApp.App.Shared
 {
     public partial class MainLayout
     {

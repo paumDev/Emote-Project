@@ -1,12 +1,12 @@
 ﻿using ClassLibraryEmotes;
-using BethanysPieShopHRM.App.Models;
+using EmoteApp.App.Models;
 using Microsoft.AspNetCore.Components;
 using System.Net.Http.Json;
-using BethanysPieShopHRM.App.Services;
+using EmoteApp.App.Services;
 using Microsoft.AspNetCore.Components.Web;
 
 
-namespace BethanysPieShopHRM.App.Pages
+namespace EmoteApp.App.Pages
 {
     public partial class EmoteOverview
     {

@@ -2,10 +2,10 @@
 using ClassLibraryEmotes;
 using System.Net.Http.Json;
 using System.Text.Json;
-using BethanysPieShopHRM.App.Helper;
+using EmoteApp.App.Helper;
 using System.Text;
 
-namespace BethanysPieShopHRM.App.Services
+namespace EmoteApp.App.Services
 {
     public class EmoteDataService : IEmoteDataService
     {

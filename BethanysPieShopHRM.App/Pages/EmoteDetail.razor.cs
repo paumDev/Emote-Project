@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using ClassLibraryEmotes;
-using BethanysPieShopHRM.App.Services;
+using EmoteApp.App.Services;
 using Microsoft.AspNetCore.Components.Forms;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Processing;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using Microsoft.JSInterop;
 using System.IO;
 
-namespace BethanysPieShopHRM.App.Pages
+namespace EmoteApp.App.Pages
 {
     public partial class EmoteDetail
     {

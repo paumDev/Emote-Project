@@ -1,7 +1,7 @@
 ﻿using ClassLibraryEmotes;
 using System.Text.Json;
 
-namespace BethanysPieShopHRM.App.Services
+namespace EmoteApp.App.Services
 {
     public class UserDataService : IUserDataService
     {

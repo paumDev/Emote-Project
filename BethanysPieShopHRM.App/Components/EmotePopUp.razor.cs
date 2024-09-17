@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Components;
 using ClassLibraryEmotes;
-using BethanysPieShopHRM.App.Services;
+using EmoteApp.App.Services;
 
-namespace BethanysPieShopHRM.App.Components
+namespace EmoteApp.App.Components
 {
     public partial class EmotePopUp
     {

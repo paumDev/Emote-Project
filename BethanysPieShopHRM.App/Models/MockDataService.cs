@@ -3,7 +3,7 @@ using System.Reflection;
 using System.Reflection.Metadata.Ecma335;
 using System.Xml.Linq;
 
-namespace BethanysPieShopHRM.App.Models
+namespace EmoteApp.App.Models
 {
     public class MockDataService
     {
