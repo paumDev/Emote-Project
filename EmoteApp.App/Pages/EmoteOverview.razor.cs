@@ -13,6 +13,8 @@ namespace EmoteApp.App.Pages
         public List<Emote>? Emotes { get; set; } = default!;
         private Emote? _selectedEmote;
         private Emote? _selectedEmoteTrend;
+        private bool IsEmotePopUpVisible { get; set; } = false;
+        private bool IsPopUpTrendVisible { get; set; } = false;
 
         private string selectedSort { get; set; } = "trending"; // Valor por defecto
         private string searchQuery { get; set; } = ""; // Para la barra de búsqueda
@@ -50,12 +52,18 @@ namespace EmoteApp.App.Pages
         {
             _selectedEmote = selectedEmote;
             _selectedEmoteTrend = null;
+            IsEmotePopUpVisible = true;
+            IsPopUpTrendVisible = false;
+
         }
 
         public void ShowEmotePopUpTrend(Emote selectedEmote)
         {
             _selectedEmoteTrend = selectedEmote;
             _selectedEmote = null;
+            IsPopUpTrendVisible = true;
+            IsEmotePopUpVisible = false;
+
         }
 
         private string SelectedSort
@@ -126,6 +134,11 @@ namespace EmoteApp.App.Pages
         {
             ApplyFilters();
         }
+        private void OnSearchQueryChanged(ChangeEventArgs e)
+        {
+            SearchQuery = e.Value?.ToString() ?? string.Empty;
+            ApplyFilters();
+        }
         public List<Emote> FilteredCards
         {
             get => filteredCards;
@@ -134,6 +147,13 @@ namespace EmoteApp.App.Pages
                 filteredCards = value;
                 StateHasChanged();
             }
+        }
+        private void ClosePopUps()
+        {
+            IsEmotePopUpVisible = false;
+            IsPopUpTrendVisible = false;
+            _selectedEmote = null;
+            _selectedEmoteTrend = null;
         }
     }
 }

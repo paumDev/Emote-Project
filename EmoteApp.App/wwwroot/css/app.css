@@ -4163,6 +4163,7 @@ textarea.form-control-lg {
     align-items: center;
     justify-content: space-between;
     padding: var(--bs-navbar-padding-y) var(--bs-navbar-padding-x);
+    z-index: 900
 }
 
     .navbar > .container,
@@ -4394,6 +4395,7 @@ textarea.form-control-lg {
     .navbar-expand-lg {
         flex-wrap: nowrap;
         justify-content: flex-start;
+        z-index: 900;
     }
 
         .navbar-expand-lg .navbar-nav {
@@ -5863,6 +5865,7 @@ textarea.form-control-lg {
     overflow-x: hidden;
     overflow-y: auto;
     outline: 0;
+    z-index: 1200;
 }
 
 .modal-dialog {
@@ -5922,6 +5925,7 @@ textarea.form-control-lg {
     border: var(--bs-modal-border-width) solid var(--bs-modal-border-color);
     border-radius: var(--bs-modal-border-radius);
     outline: 0;
+    overflow-y: auto
 }
 
 .modal-backdrop {
@@ -13381,3 +13385,35 @@ input:checked + .slider {
         /* change the value of second inset in box-shadow to change the angle and direction of the moon  */
         box-shadow: inset -3px -2px 5px -2px #8983f7, inset -10px -4px 0 0 #a3dafb;
     }
+
+/*OSCURECER FONDO ANAlITICO!!!! */
+.overlayPopUp {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vw;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semitransparente */
+    z-index: 1100; /* Asegúrate de que esté sobre otros elementos */
+    
+    display: flex;
+    justify-content: center; /* Centrado horizontal */
+    align-items: center;
+}
+
+.show-overlayPopUp {
+    display: block; /* Mostrar el fondo oscuro */
+}
+
+.centered-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro con opacidad */
+    z-index: 1300; /* Asegúrate de que esté por encima de todo */
+}

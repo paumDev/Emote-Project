@@ -10,6 +10,9 @@ namespace EmoteApp.App.Components
 
         [Parameter]
         public Emote? Emote { get; set; }
+        [Parameter]
+        public EventCallback OnClose { get; set; }
+        private bool IsVisible { get; set; } = true;
 
         protected override Task OnParametersSetAsync()
         {
@@ -20,9 +23,11 @@ namespace EmoteApp.App.Components
             return Task.CompletedTask; // No necesitas await si no hay operaciones asincrónicas
         }
 
-        public void Close()
+        public async Task Close()
         {
             _Emote = null;
+            IsVisible = false;
+            await OnClose.InvokeAsync();
         }
     }
 }

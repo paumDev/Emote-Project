@@ -10,7 +10,12 @@ namespace EmoteApp.App.Shared
 
         [Inject]
         public IJSRuntime js { get; set; }
+        [Parameter] public bool IsPopupVisible { get; set; }
 
+        private void ClosePopUps()
+        {
+            IsPopupVisible = false;
+        }
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             if (firstRender)

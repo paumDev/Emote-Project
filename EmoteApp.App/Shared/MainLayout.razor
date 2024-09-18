@@ -45,6 +45,10 @@
     <div class="row h-100">
         <NavMenu></NavMenu>
         <div id="page-content-wrapper">
+            @if (IsPopupVisible)
+            {
+                <div class="overlay" @onclick="ClosePopUps"></div> <!-- Fondo oscuro -->
+            }
             @Body
         </div>
     </div>

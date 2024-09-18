@@ -11,8 +11,11 @@ namespace EmoteApp.App.Components
         private int _UserId;
         [Parameter]
         public Emote? Emote { get; set; }
+        [Parameter]
+        public EventCallback OnClose { get; set; }
         [Inject]
         public IUserDataService? UserDataService { get; set; }
+        private bool IsVisible { get; set; } = true;
 
         protected override async Task OnParametersSetAsync()
         {
@@ -39,9 +42,11 @@ namespace EmoteApp.App.Components
             }
         }
 
-        public void Close()
+        public async Task Close()
         {
             _Emote = null;
+            IsVisible = false;
+            await OnClose.InvokeAsync();
         }
     }
 }
