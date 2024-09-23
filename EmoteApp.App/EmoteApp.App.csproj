@@ -7,14 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Components\PopUpHistory.razor" />
     <Content Remove="wwwroot\js\theme.js" />
   </ItemGroup>
 
   <ItemGroup>
+    <_ContentIncludedByDefault Remove="Components\PopUpHistory.razor" />
     <_ContentIncludedByDefault Remove="wwwroot\js\theme.js" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Components\PopUpHistory.razor" />
     <None Include="wwwroot\js\theme.js" />
   </ItemGroup>
 
@@ -28,6 +31,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ClassLibraryEmotes\ClassLibraryEmotes.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Components\PopUpHistory.razor" />
   </ItemGroup>
 
 </Project>

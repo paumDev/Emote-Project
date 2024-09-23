@@ -1,4 +1,5 @@
 ﻿using ClassLibraryEmotes;
+using Microsoft.EntityFrameworkCore;
 
 namespace BethanysPieShopHRM.Api.Models
 {
@@ -61,6 +62,18 @@ namespace BethanysPieShopHRM.Api.Models
 
             _appDbContext.Emotes.Remove(foundEmote);
             _appDbContext.SaveChanges();
+        }
+        public async Task<List<EmoteChangeLog>> GetChangeLogsByEmoteIdAsync(int emoteId)
+        {
+            return await _appDbContext.EmoteChangeLogs
+            .Where(log => log.EmoteId == emoteId)
+            .ToListAsync();
+        }
+
+        public async Task AddChangeLogAsync(EmoteChangeLog log)
+        {
+            _appDbContext.EmoteChangeLogs.Add(log);
+            await _appDbContext.SaveChangesAsync();
         }
     }
 }

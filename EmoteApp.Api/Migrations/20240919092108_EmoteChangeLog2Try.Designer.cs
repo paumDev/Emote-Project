@@ -4,6 +4,7 @@ using BethanysPieShopHRM.Api.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BethanysPieShopHRM.Api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240919092108_EmoteChangeLog2Try")]
+    partial class EmoteChangeLog2Try
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -109,28 +111,6 @@ namespace BethanysPieShopHRM.Api.Migrations
                             Weight = "29KB",
                             Width = 384
                         });
-                });
-
-            modelBuilder.Entity("ClassLibraryEmotes.EmoteChangeLog", b =>
-                {
-                    b.Property<int>("EmoteChangeLogId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EmoteChangeLogId"), 1L, 1);
-
-                    b.Property<DateTime>("ChangeDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("EmoteId")
-                        .HasColumnType("int");
-
-                    b.HasKey("EmoteChangeLogId");
-
-                    b.ToTable("EmoteChangeLog");
                 });
 
             modelBuilder.Entity("ClassLibraryEmotes.User", b =>

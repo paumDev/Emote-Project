@@ -29,6 +29,8 @@ namespace EmoteApp.App.Pages
 
         public Emote? Emote { get; set; } = new Emote();
         public User? User { get; set; } = new User();
+        private int selectedEmoteId;
+        private bool showModal;
 
         protected override async Task OnInitializedAsync()
         {
@@ -105,6 +107,16 @@ namespace EmoteApp.App.Pages
             {
                 return (sizeInBytes / 1024.0).ToString("0.##") + " KB";
             }
+        }
+        private void OpenModal()
+        {
+            selectedEmoteId = Emote.EmoteId; // Ejemplo de un emote ID, aquí podrías pasar el ID del emote real
+            showModal = true; // Esto abre el modal
+        }
+
+        private void HandleModalClose(bool value)
+        {
+            showModal = value; // Esto cierra el modal
         }
     }
 }

@@ -79,9 +79,16 @@ namespace EmoteApp.App.Pages
             {
                 Emote.Version++;
                 await EmoteDataService.UpdateEmote(Emote);
+                var changeLog = new EmoteChangeLog
+                {
+                    EmoteId = Emote.EmoteId,
+                    ChangeDate = DateTime.Now,
+                    Description = $"El emote {Emote.Name} ha sido actualizado a la versión {Emote.Version}; {DateTime.Now}"
+                };
                 StatusClass = "alert-succes";
                 Message = "Emote updated!!!";
                 Saved = true;
+                await EmoteDataService.AddEmoteChangeLogAsync(changeLog);
             }
         }
         private IBrowserFile selectedFile;

@@ -81,5 +81,31 @@ namespace EmoteApp.App.Services
                 .ToList();
 
         }
+        public async Task<List<EmoteChangeLog>> GetEmoteChangeLogsAsync(int emoteId)
+        {
+            try
+            {
+                var response = await _httpClient.GetAsync($"api/Emote/{emoteId}/history");
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    Console.WriteLine($"Error en la API: {response.StatusCode}");
+                    return new List<EmoteChangeLog>(); // Maneja la situación adecuadamente
+                }
+
+                var jsonString = await response.Content.ReadAsStringAsync();
+                return JsonSerializer.Deserialize<List<EmoteChangeLog>>(jsonString);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Excepción al obtener los cambios del emote: {ex.Message}");
+                return new List<EmoteChangeLog>(); // Devuelve una lista vacía o maneja el error
+            }
+        }
+
+        public async Task AddEmoteChangeLogAsync(EmoteChangeLog changeLog)
+        {
+            await _httpClient.PostAsJsonAsync("api/emotes/history", changeLog);
+        }
     }
 }

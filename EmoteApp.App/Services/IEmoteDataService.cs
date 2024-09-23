@@ -10,5 +10,8 @@ namespace EmoteApp.App.Services
         Task UpdateEmote(Emote emote);
         Task DeleteEmote(int idEmote);
         List<Emote> ObtenerTendencias(List<Emote> emotes);
+        Task<List<EmoteChangeLog>> GetEmoteChangeLogsAsync(int emoteId);
+        Task AddEmoteChangeLogAsync(EmoteChangeLog changeLog);
+
     }
 }

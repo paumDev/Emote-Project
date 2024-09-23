@@ -1,0 +1,15 @@
+﻿@if (IsVisible)
+{
+    <div class="modal-overlay" @onclick="CloseModal">
+        <div class="modal-content" @onclick:stopPropagation="true">
+            <h3>Historial de cambios del emote</h3>
+            <ul>
+                @foreach (var log in ChangeLogs)
+                {
+                    <li>@log.ChangeDate.ToString("g") - Versión: @log.Version - @log.Description</li>
+                }
+            </ul>
+            <button @onclick="CloseModal">Cerrar</button>
+        </div>
+    </div>
+}

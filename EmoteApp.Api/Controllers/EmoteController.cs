@@ -96,5 +96,23 @@ namespace BethanysPieShopHRM.Api.Controllers
 
             return NoContent();//success
         }
+
+        [HttpGet("{emoteId}/history")]
+        public async Task<ActionResult<IEnumerable<EmoteChangeLog>>> GetEmoteHistory(int emoteId)
+        {
+            var logs = await _emoteRepository.GetChangeLogsByEmoteIdAsync(emoteId);
+            if (logs == null)
+            {
+                return NotFound();
+            }
+            return Ok(logs);
+        }
+
+        [HttpPost("history")]
+        public async Task<ActionResult> AddEmoteChangeLog(EmoteChangeLog log)
+        {
+            await _emoteRepository.AddChangeLogAsync(log);
+            return NoContent();
+        }
     }
 }

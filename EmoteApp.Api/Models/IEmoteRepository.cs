@@ -10,5 +10,8 @@ namespace BethanysPieShopHRM.Api.Models
         void DeleteEmote(int employeeId);
         //IEnumerable<EmployeeListModel> GetLongEmployeeList();
         //IEnumerable<EmployeeListModel> GetTakeLongEmployeeList(int request, int count);
+
+        Task<List<EmoteChangeLog>> GetChangeLogsByEmoteIdAsync(int emoteId);
+        Task AddChangeLogAsync(EmoteChangeLog log);
     }
 }
