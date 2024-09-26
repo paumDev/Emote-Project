@@ -1,0 +1,22 @@
+﻿@if (IsVisible)
+{
+    <div class="modal fade show d-block" id="commentModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Deja un comentario</h5>
+                    <button type="button" class="close btn btn-lg" @onclick="Close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <textarea @bind="Comment" placeholder="Escribe tu comentario aquí..." class="form-control"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" @onclick="Close">Cerrar</button>
+                    <button type="button" class="btn btn-primary" @onclick="SubmitComment">Enviar comentario</button>
+                </div>  
+            </div>
+        </div>
+    </div>
+}

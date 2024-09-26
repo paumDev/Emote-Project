@@ -13611,12 +13611,13 @@ input:checked + .slider {
     transition-duration: .3s;
     overflow: hidden;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.062);
+    margin-bottom: 10px;
 }
 
 .IconContainer {
     width: 30px;
     height: 30px;
-    background-color: rgb(103, 74, 228);
+    background-color: rgba(var(--bs-primary-rgb));
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -13626,11 +13627,11 @@ input:checked + .slider {
     transition-duration: .3s;
 }
 
-.icon {
+.iconComment {
     border-radius: 1px;
 }
 
-.text {
+.textComment {
     height: 100%;
     width: 90px;
     display: flex;
@@ -13641,6 +13642,7 @@ input:checked + .slider {
     transition-duration: .3s;
     font-size: 1.04em;
     font-weight: 600;
+    margin: 0px;
 }
 
 .bookmarkBtn:hover .IconContainer {
@@ -13649,7 +13651,7 @@ input:checked + .slider {
     transition-duration: .3s;
 }
 
-.bookmarkBtn:hover .text {
+.bookmarkBtn:hover .textComment {
     transform: translate(10px);
     width: 0;
     font-size: 0;
