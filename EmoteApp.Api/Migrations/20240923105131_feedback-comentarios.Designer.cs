@@ -4,6 +4,7 @@ using BethanysPieShopHRM.Api.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BethanysPieShopHRM.Api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240923105131_feedback-comentarios")]
+    partial class feedbackcomentarios
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -133,37 +135,6 @@ namespace BethanysPieShopHRM.Api.Migrations
                     b.HasIndex("EmoteId");
 
                     b.ToTable("EmoteChangeLogs");
-                });
-
-            modelBuilder.Entity("ClassLibraryEmotes.Feedback", b =>
-                {
-                    b.Property<int>("FeedbackId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FeedbackId"), 1L, 1);
-
-                    b.Property<string>("Content")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Downvotes")
-                        .HasColumnType("int");
-
-                    b.Property<int>("EmoteId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Upvotes")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("FeedbackId");
-
-                    b.ToTable("Feedback");
                 });
 
             modelBuilder.Entity("ClassLibraryEmotes.User", b =>

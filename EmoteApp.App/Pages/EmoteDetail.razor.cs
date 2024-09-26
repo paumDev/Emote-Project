@@ -18,6 +18,9 @@ namespace EmoteApp.App.Pages
 
         [Inject]
         public IUserDataService? UserDataService { get; set; }
+        [Inject] 
+        public IFeedbackService? FeedbackService { get; set; }
+
 
         [Inject]
         public IJSRuntime JSRuntime { get; set; }
@@ -26,6 +29,10 @@ namespace EmoteApp.App.Pages
 
         [Parameter]
         public string? EmoteId { get; set; }
+        public List<Feedback> FeedbackList { get; set; } = new List<Feedback>();
+        public Feedback NewFeedback { get; set; } = new Feedback();
+
+
 
         public Emote? Emote { get; set; } = new Emote();
         public User? User { get; set; } = new User();
@@ -37,6 +44,7 @@ namespace EmoteApp.App.Pages
             Emote = await EmoteDataService.GetEmoteDetails(int.Parse(EmoteId));
             UserId = Emote.UserId;
             User = await UserDataService.GetUserDetails(UserId);
+            FeedbackList = (await FeedbackService.GetFeedback(int.Parse(EmoteId))).ToList();
 
             // URL de la imagen
             var imageUrl = Emote.ImageName;
@@ -117,6 +125,24 @@ namespace EmoteApp.App.Pages
         private void HandleModalClose(bool value)
         {
             showModal = value; // Esto cierra el modal
+        }
+        public async Task SubmitFeedback()
+        {
+            NewFeedback.EmoteId = int.Parse(EmoteId);
+            await FeedbackService.AddFeedback(NewFeedback);
+            FeedbackList = (await FeedbackService.GetFeedback(int.Parse(EmoteId))).ToList();
+            NewFeedback = new Feedback(); // Limpiar formulario después de agregar feedback
+        }
+
+        public async Task Vote(int feedbackId, bool isUpvote)
+        {
+            await FeedbackService.Vote(feedbackId, isUpvote);
+            FeedbackList = (await FeedbackService.GetFeedback(int.Parse(EmoteId))).ToList();
+        }
+        public async Task DeleteFeedback(int feedbackId)
+        {
+            await FeedbackService.DeleteFeedback(feedbackId);
+            FeedbackList = (await FeedbackService.GetFeedback(int.Parse(EmoteId))).ToList();
         }
     }
 }

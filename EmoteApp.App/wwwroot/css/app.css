@@ -84,6 +84,7 @@
     --bs-list-group-action-hover-colorEdit: #495057;
     --PopUp-color: #FFF;
     --bs-Load: #8FF46D;
+    --path-Comment-color: var(--bs-black);
 }
 .flip-card-front {
     background: linear-gradient(120deg, rgb(210, 255, 196) 60%, rgb(232, 255, 222) 88%, rgb(210, 255, 195) 40%, rgba(121, 255, 80, 0.603) 48%);
@@ -107,6 +108,7 @@
     --bs-list-group-action-hover-colorEdit: var(--bs-gray-100);
     --PopUp-color: #878787;
     --bs-Load: #4C4C4C;
+    --path-Comment-color: #B5BAC1;
 }
 
 *,
@@ -13416,4 +13418,245 @@ input:checked + .slider {
     align-items: center; /* Centra verticalmente */
     background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro con opacidad */
     z-index: 1300; /* Asegúrate de que esté por encima de todo */
+}
+
+/*COMENTARIOS DE TAL*/
+.feedback-section {
+    background-color: var(--bs-primary);
+    border: 1px solid var(--bs-black);
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 600px;
+    margin-top: 30px
+}
+
+.feedback-item {
+    background-color: var(--bs-primary);
+    border: 1px solid var(--bs-black);
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    .feedback-item p {
+        margin: 0;
+        flex-grow: 1;
+    }
+
+/*COMENTARIOS BOTONES*/
+.containerComments {
+    --col-gray: #3f3f3f;
+    --col-white: #fff;
+    --col-like: #2196f3;
+    --col-dislike: #ff3232;
+    --transition: 350ms;
+    width: 130px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px;
+    user-select: none;
+    height: 50px;
+}
+
+    .containerComments label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1; /* Se asegura que el label ocupe el mismo espacio */
+        margin: 0; /* Elimina cualquier margen que pudiera empujar los íconos */
+        padding: 0;
+        height: 50px;
+    }
+
+
+/* Delete */
+.deleteButton {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    background-color: transparent;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+    margin: 5px;
+}
+
+    .deleteButton svg {
+        width: 65%;
+    }
+
+    .deleteButton:hover {
+        background-color: rgb(237, 56, 56);
+        overflow: visible;
+    }
+
+.bin path {
+    transition: all 0.2s;
+    fill: var(--path-Comment-color);
+}
+
+.deleteButton:hover .bin path {
+    fill: #fff;
+}
+
+.deleteButton:active {
+    transform: scale(0.98);
+}
+
+/*like*/
+.likeButton {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    background-color: transparent;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+    margin: 5px;
+}
+
+    .likeButton svg {
+        width: 100%;
+    }
+
+    .likeButton:hover {
+        background-color: rgb(73, 163, 252);
+        overflow: visible;
+    }
+
+.bin path {
+    transition: all 0.2s;
+    fill: var(--path-Comment-color);
+}
+
+.likeButton:hover .bin path {
+    fill: #fff;
+}
+
+.likeButton:active {
+    transform: scale(0.98);
+}
+/*dislike*/
+.dislikeButton {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    background-color: transparent;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+    margin: 5px;
+}
+
+    .dislikeButton svg {
+        width: 100%;
+    }
+
+    .dislikeButton:hover {
+        background-color: rgb(252, 94, 73);
+        overflow: visible;
+    }
+
+.bin path {
+    transition: all 0.2s;
+    fill: var(--path-Comment-color);
+}
+
+.dislikeButton:hover .bin path {
+    fill: #fff;
+}
+
+.dislikeButton:active {
+    transform: scale(0.98);
+}
+
+/*comment button !!!!! ALERT */
+.bookmarkBtn {
+    width: 130px;
+    height: 40px;
+    border-radius: 40px;
+    border: none;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition-duration: .3s;
+    overflow: hidden;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.062);
+}
+
+.IconContainer {
+    width: 30px;
+    height: 30px;
+    background-color: rgb(103, 74, 228);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    z-index: 2;
+    transition-duration: .3s;
+}
+
+.icon {
+    border-radius: 1px;
+}
+
+.text {
+    height: 100%;
+    width: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(26, 26, 26);
+    z-index: 1;
+    transition-duration: .3s;
+    font-size: 1.04em;
+    font-weight: 600;
+}
+
+.bookmarkBtn:hover .IconContainer {
+    width: 120px;
+    border-radius: 40px;
+    transition-duration: .3s;
+}
+
+.bookmarkBtn:hover .text {
+    transform: translate(10px);
+    width: 0;
+    font-size: 0;
+    transition-duration: .3s;
+}
+
+.bookmarkBtn:active {
+    transform: scale(0.95);
+    transition-duration: .3s;
 }

@@ -1,4 +1,5 @@
 using BethanysPieShopHRM.Api.Models;
+using EmoteApp.Api.Models;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +13,8 @@ builder.Services.AddDbContext<AppDbContext>(options => {
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IEmoteRepository, EmoteRepository>();
+builder.Services.AddScoped<IFeedbackRepository, FeedbackRepository>();
+
 
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 

@@ -13,6 +13,8 @@ namespace BethanysPieShopHRM.Api.Models
         public DbSet<Emote> Emotes { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<EmoteChangeLog> EmoteChangeLogs { get; set; }
+        public DbSet<Feedback> Feedback { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
