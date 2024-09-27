@@ -131,51 +131,60 @@
                 <CommentModal EmoteId="@EmoteId" IsVisible="@isCommentModalVisible" OnSubmit="@HandleSubmitComment" OnClose="@CloseCommentModal" />
             </div>
         }
-        @foreach (var feedback in FeedbackList)
+        @if (FeedbackList.Count() == 0)
         {
-            <div class="feedback-item">
-                <p>@feedback.Content</p>
-                <div class="containerComments">
-                    <button class="likeButton" @onclick="() => Vote(feedback.FeedbackId, true)">
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                             width="100"
-                             height="100"
-                             viewBox="0 0 24 24"
-                             class="bin">
-                            <path d="M20 8h-5.612l1.123-3.367c.202-.608.1-1.282-.275-1.802S14.253 2 13.612 2H12c-.297 0-.578.132-.769.36L6.531 8H4c-1.103 0-2 .897-2 2v9c0 1.103.897 2 2 2h13.307a2.01 2.01 0 0 0 1.873-1.298l2.757-7.351A1 1 0 0 0 22 12v-2c0-1.103-.897-2-2-2zM4 10h2v9H4v-9zm16 1.819L17.307 19H8V9.362L12.468 4h1.146l-1.562 4.683A.998.998 0 0 0 13 10h7v1.819z"></path>
-                        </svg>
-                    </button>
-                    <p>@feedback.Upvotes</p>
-                    <button class="dislikeButton" @onclick="() => Vote(feedback.FeedbackId, false)">
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                             width="100"
-                             height="100"
-                             viewBox="0 0 24 24"
-                             class="bin">
-                            <path d=" M20 3H6.693A2.01 2.01 0 0 0 4.82 4.298l-2.757 7.351A1 1 0 0 0 2 12v2c0 1.103.897 2 2 2h5.612L8.49 19.367a2.004 2.004 0 0 0 .274 1.802c.376.52.982.831 1.624.831H12c.297 0 .578-.132.769-.36l4.7-5.64H20c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2zm-8.469 17h-1.145l1.562-4.684A1 1 0 0 0 11 14H4v-1.819L6.693 5H16v9.638L11.531 20zM18 14V5h2l.001 9H18z"></path>
-                        </svg>
-                    </button>
-                    <p>@feedback.Downvotes</p>
+                <div class="centered-text">
+                    <p>¡Escribe el primer comentario!</p>
                 </div>
-                @* <button @onclick="() => Vote(feedback.FeedbackId, false)"> *@
+        }
+        else
+        {
+            @foreach (var feedback in FeedbackList)
+            {
+                <div class="feedback-item">
+                    <p>@feedback.Content</p>
+                    <div class="containerComments">
+                        <button class="likeButton" @onclick="() => Vote(feedback.FeedbackId, true)">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                 width="100"
+                                 height="100"
+                                 viewBox="0 0 24 24"
+                                 class="bin">
+                                <path d="M20 8h-5.612l1.123-3.367c.202-.608.1-1.282-.275-1.802S14.253 2 13.612 2H12c-.297 0-.578.132-.769.36L6.531 8H4c-1.103 0-2 .897-2 2v9c0 1.103.897 2 2 2h13.307a2.01 2.01 0 0 0 1.873-1.298l2.757-7.351A1 1 0 0 0 22 12v-2c0-1.103-.897-2-2-2zM4 10h2v9H4v-9zm16 1.819L17.307 19H8V9.362L12.468 4h1.146l-1.562 4.683A.998.998 0 0 0 13 10h7v1.819z"></path>
+                            </svg>
+                        </button>
+                        <p>@feedback.Upvotes</p>
+                        <button class="dislikeButton" @onclick="() => Vote(feedback.FeedbackId, false)">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                 width="100"
+                                 height="100"
+                                 viewBox="0 0 24 24"
+                                 class="bin">
+                                <path d=" M20 3H6.693A2.01 2.01 0 0 0 4.82 4.298l-2.757 7.351A1 1 0 0 0 2 12v2c0 1.103.897 2 2 2h5.612L8.49 19.367a2.004 2.004 0 0 0 .274 1.802c.376.52.982.831 1.624.831H12c.297 0 .578-.132.769-.36l4.7-5.64H20c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2zm-8.469 17h-1.145l1.562-4.684A1 1 0 0 0 11 14H4v-1.819L6.693 5H16v9.638L11.531 20zM18 14V5h2l.001 9H18z"></path>
+                            </svg>
+                        </button>
+                        <p>@feedback.Downvotes</p>
+                    </div>
+                    @* <button @onclick="() => Vote(feedback.FeedbackId, false)"> *@
 
-                <button class="deleteButton" @onclick="() => DeleteFeedback(feedback.FeedbackId)">
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                         fill="none"
-                         viewBox="0 0 50 59"
-                         class="bin">
-                        <path fill="#B5BAC1"
-                              d="M0 7.5C0 5.01472 2.01472 3 4.5 3H45.5C47.9853 3 50 5.01472 50 7.5V7.5C50 8.32843 49.3284 9 48.5 9H1.5C0.671571 9 0 8.32843 0 7.5V7.5Z"></path>
-                        <path fill="#B5BAC1"
-                              d="M17 3C17 1.34315 18.3431 0 20 0H29.3125C30.9694 0 32.3125 1.34315 32.3125 3V3H17V3Z"></path>
-                        <path fill="#B5BAC1"
-                              d="M2.18565 18.0974C2.08466 15.821 3.903 13.9202 6.18172 13.9202H43.8189C46.0976 13.9202 47.916 15.821 47.815 18.0975L46.1699 55.1775C46.0751 57.3155 44.314 59.0002 42.1739 59.0002H7.8268C5.68661 59.0002 3.92559 57.3155 3.83073 55.1775L2.18565 18.0974ZM18.0003 49.5402C16.6196 49.5402 15.5003 48.4209 15.5003 47.0402V24.9602C15.5003 23.5795 16.6196 22.4602 18.0003 22.4602C19.381 22.4602 20.5003 23.5795 20.5003 24.9602V47.0402C20.5003 48.4209 19.381 49.5402 18.0003 49.5402ZM29.5003 47.0402C29.5003 48.4209 30.6196 49.5402 32.0003 49.5402C33.381 49.5402 34.5003 48.4209 34.5003 47.0402V24.9602C34.5003 23.5795 33.381 22.4602 32.0003 22.4602C30.6196 22.4602 29.5003 23.5795 29.5003 24.9602V47.0402Z"
-                              clip-rule="evenodd"
-                              fill-rule="evenodd"></path>
-                        <path d="M2 13H48L47.6742 21.28H2.32031L2 13Z"></path>
-                    </svg>
-                </button>
-            </div>
+                    <button class="deleteButton" @onclick="() => DeleteFeedback(feedback.FeedbackId)">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             fill="none"
+                             viewBox="0 0 50 59"
+                             class="bin">
+                            <path fill="#B5BAC1"
+                                  d="M0 7.5C0 5.01472 2.01472 3 4.5 3H45.5C47.9853 3 50 5.01472 50 7.5V7.5C50 8.32843 49.3284 9 48.5 9H1.5C0.671571 9 0 8.32843 0 7.5V7.5Z"></path>
+                            <path fill="#B5BAC1"
+                                  d="M17 3C17 1.34315 18.3431 0 20 0H29.3125C30.9694 0 32.3125 1.34315 32.3125 3V3H17V3Z"></path>
+                            <path fill="#B5BAC1"
+                                  d="M2.18565 18.0974C2.08466 15.821 3.903 13.9202 6.18172 13.9202H43.8189C46.0976 13.9202 47.916 15.821 47.815 18.0975L46.1699 55.1775C46.0751 57.3155 44.314 59.0002 42.1739 59.0002H7.8268C5.68661 59.0002 3.92559 57.3155 3.83073 55.1775L2.18565 18.0974ZM18.0003 49.5402C16.6196 49.5402 15.5003 48.4209 15.5003 47.0402V24.9602C15.5003 23.5795 16.6196 22.4602 18.0003 22.4602C19.381 22.4602 20.5003 23.5795 20.5003 24.9602V47.0402C20.5003 48.4209 19.381 49.5402 18.0003 49.5402ZM29.5003 47.0402C29.5003 48.4209 30.6196 49.5402 32.0003 49.5402C33.381 49.5402 34.5003 48.4209 34.5003 47.0402V24.9602C34.5003 23.5795 33.381 22.4602 32.0003 22.4602C30.6196 22.4602 29.5003 23.5795 29.5003 24.9602V47.0402Z"
+                                  clip-rule="evenodd"
+                                  fill-rule="evenodd"></path>
+                            <path d="M2 13H48L47.6742 21.28H2.32031L2 13Z"></path>
+                        </svg>
+                    </button>
+                </div>
+            }
         }
     </div>
 </section>

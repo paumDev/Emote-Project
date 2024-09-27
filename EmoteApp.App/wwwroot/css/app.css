@@ -13449,6 +13449,14 @@ input:checked + .slider {
         flex-grow: 1;
     }
 
+.centered-text {
+    position: absolute; /* Permite centrar en relación al contenedor */
+    top: 50%; /* 50% desde la parte superior */
+    left: 50%; /* 50% desde la izquierda */
+    transform: translate(-50%, -50%); /* Ajusta el elemento al centro */
+    text-align: center; /* Alinea el texto dentro del div */
+}
+
 /*COMENTARIOS BOTONES*/
 .containerComments {
     --col-gray: #3f3f3f;

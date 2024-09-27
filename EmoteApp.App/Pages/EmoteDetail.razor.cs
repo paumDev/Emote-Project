@@ -18,7 +18,7 @@ namespace EmoteApp.App.Pages
 
         [Inject]
         public IUserDataService? UserDataService { get; set; }
-        [Inject] 
+        [Inject]
         public IFeedbackService? FeedbackService { get; set; }
 
 
@@ -54,9 +54,8 @@ namespace EmoteApp.App.Pages
             var imageUrl = Emote.ImageName;
 
             FeedbackList = (await FeedbackService.GetFeedback(int.Parse(EmoteId)))
+                .OrderByDescending(f => f.Upvotes - f.Downvotes) // Ordenar aquí
                 .ToList();
-
-            FeedbackList = Ordenar(FeedbackList).ToList();
 
             // Realizar una solicitud HTTP para obtener la imagen
             using var httpClient = new HttpClient();
@@ -153,8 +152,9 @@ namespace EmoteApp.App.Pages
             {
                 newFeedback.EmoteId = int.Parse(EmoteId);  // Asigna el EmoteId
                 await FeedbackService.AddFeedback(newFeedback);
-                FeedbackList = (await FeedbackService.GetFeedback(int.Parse(EmoteId))).ToList();
-                FeedbackList = Ordenar(FeedbackList).ToList();
+                FeedbackList = (await FeedbackService.GetFeedback(int.Parse(EmoteId)))
+                    .OrderByDescending(f => f.Upvotes - f.Downvotes) // Ordenar aquí
+                    .ToList();
                 NewFeedback = new Feedback();  // Limpia el formulario
             }
             else
@@ -166,12 +166,16 @@ namespace EmoteApp.App.Pages
         public async Task Vote(int feedbackId, bool isUpvote)
         {
             await FeedbackService.Vote(feedbackId, isUpvote);
-            FeedbackList = (await FeedbackService.GetFeedback(int.Parse(EmoteId))).ToList();
+            FeedbackList = (await FeedbackService.GetFeedback(int.Parse(EmoteId)))
+                .OrderByDescending(f => f.Upvotes - f.Downvotes) // Ordenar aquí
+                .ToList();
         }
         public async Task DeleteFeedback(int feedbackId)
         {
             await FeedbackService.DeleteFeedback(feedbackId);
-            FeedbackList = (await FeedbackService.GetFeedback(int.Parse(EmoteId))).ToList();
+            FeedbackList = (await FeedbackService.GetFeedback(int.Parse(EmoteId)))
+                .OrderByDescending(f => f.Upvotes - f.Downvotes) // Ordenar aquí
+                .ToList();
         }
     }
 }
