@@ -1,10 +1,15 @@
 ﻿using Microsoft.AspNetCore.Components;
 using System.Threading.Tasks;
+using ClassLibraryEmotes;
+using EmoteApp.App.Pages;
 
 namespace EmoteApp.App.Components
 {
     public partial class CommentModal
     {
+        [Parameter]
+        public string? EmoteId { get; set; }
+
         [Parameter]
         public bool IsVisible { get; set; }
 
@@ -24,12 +29,12 @@ namespace EmoteApp.App.Components
 
         private async Task SubmitComment()
         {
-            // Enviar el comentario
-            await OnSubmit.InvokeAsync(Comment);
-
-            // Cerrar el modal después de enviar
-            Comment = string.Empty;
-            await Close();
+            if (!string.IsNullOrWhiteSpace(Comment))
+            {
+                await OnSubmit.InvokeAsync(Comment);
+                Comment = string.Empty;
+                await Close();
+            }
         }
     }
 }

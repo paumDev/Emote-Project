@@ -38,6 +38,11 @@ namespace EmoteApp.App.Pages
         private bool showModal;
         private bool isCommentModalVisible = false;
 
+        private List<Feedback> Ordenar(List<Feedback> listaSinOrden)
+        {
+            listaSinOrden.OrderByDescending(f => f.Upvotes);
+            return listaSinOrden;
+        }
         protected override async Task OnInitializedAsync()
         {
             Emote = await EmoteDataService.GetEmoteDetails(int.Parse(EmoteId));
@@ -47,6 +52,11 @@ namespace EmoteApp.App.Pages
 
             // URL de la imagen
             var imageUrl = Emote.ImageName;
+
+            FeedbackList = (await FeedbackService.GetFeedback(int.Parse(EmoteId)))
+                .ToList();
+
+            FeedbackList = Ordenar(FeedbackList).ToList();
 
             // Realizar una solicitud HTTP para obtener la imagen
             using var httpClient = new HttpClient();
@@ -128,21 +138,29 @@ namespace EmoteApp.App.Pages
         {
             isCommentModalVisible = false;
         }
-        private void HandleSubmitComment(string comment)
+        private async Task HandleSubmitComment(string comment)
         {
-            // Aquí puedes manejar el comentario enviado
-            Console.WriteLine($"Comment received: {comment}");
+            NewFeedback.Content = comment; // Asigna el comentario al feedback
+            await SubmitFeedback(NewFeedback);
         }
         private void HandleModalClose(bool value)
         {
             showModal = value; // Esto cierra el modal
         }
-        public async Task SubmitFeedback()
+        public async Task SubmitFeedback(Feedback newFeedback)
         {
-            NewFeedback.EmoteId = int.Parse(EmoteId);
-            await FeedbackService.AddFeedback(NewFeedback);
-            FeedbackList = (await FeedbackService.GetFeedback(int.Parse(EmoteId))).ToList();
-            NewFeedback = new Feedback(); // Limpiar formulario después de agregar feedback
+            if (!string.IsNullOrEmpty(EmoteId))
+            {
+                newFeedback.EmoteId = int.Parse(EmoteId);  // Asigna el EmoteId
+                await FeedbackService.AddFeedback(newFeedback);
+                FeedbackList = (await FeedbackService.GetFeedback(int.Parse(EmoteId))).ToList();
+                FeedbackList = Ordenar(FeedbackList).ToList();
+                NewFeedback = new Feedback();  // Limpia el formulario
+            }
+            else
+            {
+                Console.WriteLine("EmoteId is null or empty");
+            }
         }
 
         public async Task Vote(int feedbackId, bool isUpvote)

@@ -125,7 +125,12 @@
             </span>
             <p class="textComment">Comentar</p>
         </button>
-        <CommentModal IsVisible="@isCommentModalVisible" OnClose="@CloseCommentModal" OnSubmit="@HandleSubmitComment" />
+        @if (isCommentModalVisible)
+        {
+            <div class="overlayPopUp">
+                <CommentModal EmoteId="@EmoteId" IsVisible="@isCommentModalVisible" OnSubmit="@HandleSubmitComment" OnClose="@CloseCommentModal" />
+            </div>
+        }
         @foreach (var feedback in FeedbackList)
         {
             <div class="feedback-item">
@@ -172,9 +177,5 @@
                 </button>
             </div>
         }
-
-        <h3>Añadir un nuevo comentario</h3>
-        <textarea @bind="NewFeedback.Content"></textarea>
-        <button @onclick="SubmitFeedback">Enviar Comentario</button>
     </div>
 </section>
