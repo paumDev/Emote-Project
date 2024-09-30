@@ -134,7 +134,9 @@
         @if (FeedbackList.Count() == 0)
         {
                 <div class="centered-text">
-                    <p>¡Escribe el primer comentario!</p>
+                    <div class="feedback-item" @onclick="OpenCommentModal">
+                        <p>¡Escribe el primer comentario!</p>
+                    </div>
                 </div>
         }
         else

@@ -5,10 +5,17 @@
 @if (!Saved)
 {
     <section class="employee-edit">
-        <h1 class="page-title">Details for @Emote.Name</h1>
-        <div class="col-2 text-center">
-            <img src="@Emote.ImageName" class="img-fluid rounded mx-auto d-block" alt="Emote Image">
-        </div>
+        @if(Emote.EmoteId == 0)
+        {
+            <h1 class="page-title">New Emote @Emote.Name</h1>
+        }
+        else
+        {
+            <h1 class="page-title">Details for @Emote.Name</h1>
+            <div class="col-2 text-center">
+                <img src="@Emote.ImageName" class="img-fluid rounded mx-auto d-block" alt="Emote Image">
+            </div>
+        }
         <EditForm Model="@Emote" OnValidSubmit="@HandleValidSubmit" OnInvalidSubmit="HandleInvalidSubmit">
             <DataAnnotationsValidator />
             <ValidationSummary />
@@ -18,7 +25,7 @@
                 <div class="row mb-3">
                     <label for="image" class="col-12 col-sm-3">Select Emote: </label>
                     <div class="col-md-8">
-                        <InputFile OnChange="OnInputFileChange" />
+                        <InputFile OnChange="OnInputFileChange" style=" width: 155px; " />
                     </div>
                 </div>
             }
